@@ -8,38 +8,74 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State private var showLanguageDialog = false
+    
     var body: some View {
         NavigationStack {
-            VStack (alignment: .leading) {
-                Text("Aplikasi ini tersedia dalam bahasa indonesia dan inggris, ganti bahasa dengan pengaturan dibawah.")
-                    .font(.body)
-                    .padding(.top, 16)
-                Text("Pengaturan")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding(.top, 16)
-                Divider()
-                HStack {
-                    Text("Indonesia")
-                        .font(.body)
-                    Spacer()
-                    Button(action: {}) {
+            ZStack {
+                if showLanguageDialog {
+                    Color.black.opacity(0.5)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation {
+                                showLanguageDialog = false
+                            }
+                        }
+                        .zIndex(1)
+                    VStack {
                         Text("Ganti Bahasa")
                             .font(.body)
                             .fontWeight(.semibold)
-                            .foregroundStyle(.white)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 24)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8).fill(Color.teal)
-                            )
+                            .padding(.bottom, 8)
+                        ForEach(Language.allCases) { language in
+                            Text(language.rawValue)
+                                .font(.body)
+                                .padding(.vertical, 2)
+                        }
                     }
+                    .padding(16)
+                    .frame(maxWidth: 300)
+                    .background(Color.white)
+                    .cornerRadius(12)
+                    .shadow(radius: 10)
+                    .zIndex(2)
                 }
-                Spacer()
+                
+                VStack (alignment: .leading) {
+                    Text("Aplikasi ini tersedia dalam bahasa indonesia dan inggris, ganti bahasa dengan pengaturan dibawah.")
+                        .font(.body)
+                        .padding(.top, 16)
+                    Text("Pengaturan")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(.top, 16)
+                    Divider()
+                    HStack {
+                        Text("Indonesia")
+                            .font(.body)
+                        Spacer()
+                        Button(action: {
+                            showLanguageDialog.toggle()
+                        }) {
+                            Text("Ganti Bahasa")
+                                .font(.body)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.white)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 24)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8).fill(Color.teal)
+                                )
+                        }
+                        .zIndex(0)
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .navigationTitle("App Language")
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .padding(.horizontal, 16)
-            .navigationTitle("App Language")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
