@@ -73,9 +73,9 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 16)
-                .navigationTitle("App Language")
-                .navigationBarTitleDisplayMode(.inline)
             }
+            .navigationTitle("App Language")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
