@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct App_LanguageApp: App {
+    
+    @StateObject private var appLanguageState = AppLanguageState()
+    
     var body: some Scene {
         WindowGroup {
+            
             HomeView()
+                .environmentObject(appLanguageState)
+                .environment(\.locale, Locale(identifier: "\(appLanguageState.language)"))
         }
     }
 }
