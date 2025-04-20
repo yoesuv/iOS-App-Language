@@ -9,6 +9,12 @@
             "state" : "translated",
             "value" : "App Language"
           }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Bahasa"
+          }
         }
       }
     },
@@ -20,12 +26,24 @@
             "state" : "translated",
             "value" : "Change Language"
           }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganti Bahasa"
+          }
         }
       }
     },
     "Indonesia" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indonesia"
+          }
+        },
+        "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Indonesia"
@@ -39,7 +57,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This application is available in english and indonesian language, change language settings below"
+            "value" : "This application is available in english and indonesian language, change language settings below."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikasi ini tersedia dalam bahasa indonesia dan inggris, ganti bahasa dengan pengaturan dibawah."
           }
         }
       }
@@ -51,6 +75,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengaturan"
           }
         }
       }
