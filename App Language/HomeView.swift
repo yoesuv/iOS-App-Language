@@ -25,7 +25,7 @@ struct HomeView: View {
                         }
                         .zIndex(1)
                     VStack {
-                        Text(LocalizedStringKey("change_language"))
+                        Text("change_language".localized)
                             .font(.body)
                             .fontWeight(.semibold)
                             .padding(.bottom, 8)
@@ -50,10 +50,10 @@ struct HomeView: View {
                 }
                 
                 VStack (alignment: .leading) {
-                    Text(LocalizedStringKey("message"))
+                    Text("message".localized)
                         .font(.body)
                         .padding(.top, 16)
-                    Text(LocalizedStringKey("settings"))
+                    Text("settings".localized)
                         .font(.title2)
                         .fontWeight(.bold)
                         .padding(.top, 16)
@@ -65,7 +65,7 @@ struct HomeView: View {
                         Button(action: {
                             showLanguageDialog.toggle()
                         }) {
-                            Text(LocalizedStringKey("change_language"))
+                            Text("change_language".localized)
                                 .font(.body)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
@@ -81,9 +81,15 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 16)
             }
-            .navigationTitle(LocalizedStringKey("app_name"))
+            .navigationTitle("app_name".localized)
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+}
+
+extension String {
+    var localized: LocalizedStringKey {
+        return LocalizedStringKey(self)
     }
 }
 
