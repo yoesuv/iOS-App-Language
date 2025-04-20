@@ -12,6 +12,18 @@ struct HomeView: View {
     @EnvironmentObject private var appLanguageState: AppLanguageState
     @State private var showLanguageDialog = false
     
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "AppTeal")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -72,7 +84,7 @@ struct HomeView: View {
                                 .padding(.vertical, 8)
                                 .padding(.horizontal, 24)
                                 .background(
-                                    RoundedRectangle(cornerRadius: 8).fill(Color.teal)
+                                    RoundedRectangle(cornerRadius: 8).fill(Color("AppTeal"))
                                 )
                         }
                         .zIndex(0)
