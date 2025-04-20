@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject private var appLanguageState: AppLanguageState
     @State private var showLanguageDialog = false
     
     var body: some View {
@@ -32,6 +33,12 @@ struct HomeView: View {
                             Text(language.rawValue)
                                 .font(.body)
                                 .padding(.vertical, 2)
+                                .onTapGesture {
+                                    withAnimation {
+                                        showLanguageDialog = false
+                                    }
+                                    self.appLanguageState.language = language
+                                }
                         }
                     }
                     .padding(16)
@@ -52,7 +59,7 @@ struct HomeView: View {
                         .padding(.top, 16)
                     Divider()
                     HStack {
-                        Text("Indonesia")
+                        Text(appLanguageState.language.rawValue)
                             .font(.body)
                         Spacer()
                         Button(action: {

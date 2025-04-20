@@ -35,22 +35,6 @@
         }
       }
     },
-    "Indonesia" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Indonesia"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Indonesia"
-          }
-        }
-      }
-    },
     "message" : {
       "extractionState" : "manual",
       "localizations" : {

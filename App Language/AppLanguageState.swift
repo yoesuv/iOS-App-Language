@@ -11,12 +11,4 @@ class AppLanguageState: ObservableObject {
     
     @Published var language: Language = .en
     
-    func switchToEnglish() {
-        language = .en
-    }
-    
-    func switchToIndonesian() {
-        language = .id
-    }
-    
 }
