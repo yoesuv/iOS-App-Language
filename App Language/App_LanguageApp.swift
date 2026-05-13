@@ -16,7 +16,7 @@ struct App_LanguageApp: App {
         WindowGroup {
             HomeView()
                 .environmentObject(appLanguageState)
-                .environment(\.locale, Locale(identifier: "\(appLanguageState.language)"))
+                .environment(\.locale, Locale(identifier: appLanguageState.language.localeIdentifier))
         }
     }
 }

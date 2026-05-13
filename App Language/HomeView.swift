@@ -36,28 +36,14 @@ struct HomeView: View {
                             }
                         }
                         .zIndex(1)
-                    VStack {
-                        Text("change_language".localized)
-                            .font(.body)
-                            .fontWeight(.semibold)
-                            .padding(.bottom, 8)
-                        ForEach(Language.allCases) { language in
-                            Text(language.rawValue)
-                                .font(.body)
-                                .padding(.vertical, 2)
-                                .onTapGesture {
-                                    withAnimation {
-                                        showLanguageDialog = false
-                                    }
-                                    self.appLanguageState.language = language
-                                }
+                    LanguageDialog(
+                        onSelect: { language in
+                            withAnimation {
+                                showLanguageDialog = false
+                            }
+                            appLanguageState.language = language
                         }
-                    }
-                    .padding(16)
-                    .frame(maxWidth: 300)
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .shadow(radius: 10)
+                    )
                     .zIndex(2)
                 }
                 
@@ -70,8 +56,9 @@ struct HomeView: View {
                         .fontWeight(.bold)
                         .padding(.top, 16)
                     Divider()
+                        .padding(.bottom, 8)
                     HStack {
-                        Text(appLanguageState.language.rawValue)
+                        Text(appLanguageState.language.displayName)
                             .font(.body)
                         Spacer()
                         Button(action: {
@@ -81,7 +68,7 @@ struct HomeView: View {
                                 .font(.body)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.white)
-                                .padding(.vertical, 8)
+                                .padding(.vertical, 10)
                                 .padding(.horizontal, 24)
                                 .background(
                                     RoundedRectangle(cornerRadius: 8).fill(Color("AppTeal"))
@@ -99,12 +86,36 @@ struct HomeView: View {
     }
 }
 
-extension String {
-    var localized: LocalizedStringKey {
-        return LocalizedStringKey(self)
+private struct LanguageDialog: View {
+    let onSelect: (Language) -> Void
+
+    var body: some View {
+        VStack {
+            Text("change_language".localized)
+                .font(.body)
+                .fontWeight(.semibold)
+                .padding(.bottom, 8)
+
+            ForEach(Language.allCases) { language in
+                Button(action: {
+                    onSelect(language)
+                }) {
+                    Text(language.displayName)
+                        .font(.body)
+                        .foregroundStyle(.primary)
+                        .padding(.vertical, 2)
+                }
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: 300)
+        .background(Color.white)
+        .cornerRadius(12)
+        .shadow(radius: 10)
     }
 }
 
 #Preview {
     HomeView()
+        .environmentObject(AppLanguageState())
 }
