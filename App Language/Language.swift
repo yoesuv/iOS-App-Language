@@ -6,8 +6,19 @@
 //
 
 enum Language: String, CaseIterable, Identifiable {
-    case en = "English"
-    case id = "Indonesia"
-    
-    var id: String { self.rawValue }
+    case en
+    case id
+
+    var id: String { rawValue }
+
+    var localeIdentifier: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .en:
+            return "English"
+        case .id:
+            return "Indonesia"
+        }
+    }
 }
